@@ -10,6 +10,7 @@ public class Main {
 	int numPlay;
 	int primeiro = 0;
 	String atual;
+	String opt = "n";
 
         System.out.print("Digite a quantidade de jogadores: ");
         numPlay = input.nextInt();
@@ -35,7 +36,7 @@ public class Main {
             for(int i = 0; i < palavra.length(); i++){
                 secreto[i] = '_';
             }
-            boolean fim = false;
+            boolean fim = true;
             while(erro < 6){
                 for(int i = 0; i < palavra.length(); i++){
                     System.out.print(secreto[i]);
@@ -58,10 +59,12 @@ public class Main {
 
                         System.out.println("Letra correta!");
                         for (int j = 0; j < palavra.length(); j++) {
-                            if ((palavra.charAt(j) != '_')) {
-                                fim = true;
-                            } else {
+                            if ((secreto[j] == '_')) {
                                 fim = false;
+                                break;
+                            }
+                            else{
+                                fim = true;
                             }
                         }
                         if(fim){
@@ -80,9 +83,6 @@ public class Main {
                     if(fim){
                         break;
                     }
-                }
-                if(fim){
-                    break;
                 }
             }
         }
