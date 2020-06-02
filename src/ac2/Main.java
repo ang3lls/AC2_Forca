@@ -35,6 +35,7 @@ public class Main {
             for(int i = 0; i < palavra.length(); i++){
                 secreto[i] = '_';
             }
+            boolean fim = false;
             while(erro < 6){
                 for(int i = 0; i < palavra.length(); i++){
                     System.out.print(secreto[i]);
@@ -53,13 +54,35 @@ public class Main {
                            contem = true;
                         }
                         }
-                    if(contem){
+                    if(contem) {
+
                         System.out.println("Letra correta!");
+                        for (int j = 0; j < palavra.length(); j++) {
+                            if ((palavra.charAt(j) != '_')) {
+                                fim = true;
+                            } else {
+                                fim = false;
+                            }
+                        }
+                        if(fim){
+                            System.out.println(nome[i] + " acertou!");
+                            System.out.println("A palavra era " + palavra);
+                            pontos[i]++;
+                            if(pontos[i] > primeiro){
+                                primeiro = pontos[i];
+                            }
+                        }
                     }
                     else{
                         System.out.println("Letra errada!");
                         erro++;
                     }
+                    if(fim){
+                        break;
+                    }
+                }
+                if(fim){
+                    break;
                 }
             }
         }
