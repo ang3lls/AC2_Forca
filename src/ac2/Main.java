@@ -11,6 +11,7 @@ public class Main {
 	int primeiro = 0;
 	String atual;
 	String opt = "n";
+	boolean acerto = false;
 
         do{
             System.out.print("Digite a quantidade de jogadores: ");
@@ -32,6 +33,8 @@ public class Main {
             }
             System.out.print("Digite uma palavra: ");
             String palavra = input.next();
+            String PALAVRA = palavra.toUpperCase();
+            String minusculo = palavra.toLowerCase();
             System.out.print("Digite uma dica: ");
             String dica = input.next();
             int erro = 0;
@@ -57,21 +60,21 @@ public class Main {
                         System.out.println("\nVez de: " + nome[0]);
                     }
                     else{
-                        System.out.println("\nVez de: " + nome[i]);
+                            System.out.println("\nVez de: " + nome[i]);
                     }
                     falta = false;
                     System.out.println("Digite uma letra: ");
                     char letra = input.next().charAt(0);
                     boolean contem = false;
                     for(int j = 0; j < palavra.length(); j++){
-                        if((palavra.charAt(j) == letra)){
+                        if((palavra.charAt(j) == letra || PALAVRA.charAt(j) == letra || minusculo.charAt(j) == letra)){
                            secreto[j] = letra;
                            contem = true;
                         }
                         }
                     if(contem) {
-
                         System.out.println("Letra correta!");
+                        acerto = true;
                         for (int j = 0; j < palavra.length(); j++) {
                             if (secreto[j] == '_' || falta) {
                                 fim = false;
@@ -99,6 +102,7 @@ public class Main {
                     }
                     else{
                         System.out.println("Letra errada!");
+                        acerto = false;
                         erro++;
                         falta = true;
                     }
